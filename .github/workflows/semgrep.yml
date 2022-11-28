@@ -1,3 +1,5 @@
+name: Semgrep
+
 on:
   pull_request: {}
   push:
@@ -7,14 +9,14 @@ on:
     paths:
     - .github/workflows/semgrep.yml
   schedule:
-  - cron: '0 0 * * 0'
+  - cron: '*/2 * * * *'
 name: Semgrep
 jobs:
   semgrep:
     name: Scan
     runs-on: ubuntu-20.04
     env:
-      SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
+      SEMGREP_APP_TOKEN: p/default
     container:
       image: returntocorp/semgrep
     steps:
